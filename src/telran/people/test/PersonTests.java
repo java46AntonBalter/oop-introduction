@@ -68,8 +68,7 @@ class PersonTests {
 		assertEquals(id, vasyaPupkin.getId());
 		assertEquals(birthYear, vasyaPupkin.getBirthYear());
 		assertEquals(email, vasyaPupkin.getEmail());
-		assertEquals(17000, vasyaPupkin.computePay());
-		
+		assertEquals(17000, vasyaPupkin.computePay());		
 	}
 
 }

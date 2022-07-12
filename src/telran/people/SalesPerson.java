@@ -14,6 +14,7 @@ public class SalesPerson extends Employee {
 	public void setPercent(int percent) {
 		this.percent = percent;		
 	}
+	@Override
 	public int computePay() {
 		return getBasicSalary() + ((sales/100) * percent);
 	}
