@@ -17,14 +17,8 @@ class PersonTests {
 		assertEquals(id, vasyaPupkin.getId());
 		assertEquals(birthYear, vasyaPupkin.getBirthYear());
 		assertEquals(email, vasyaPupkin.getEmail());
-		id = 777777;
-		birthYear = 2002;
 		email = "pupkin@vasya.net";
-		vasyaPupkin.setId(id);
-		vasyaPupkin.setBirthYear(birthYear);
 		vasyaPupkin.setEmail(email);
-		assertEquals(id, vasyaPupkin.getId());
-		assertEquals(birthYear, vasyaPupkin.getBirthYear());
 		assertEquals(email, vasyaPupkin.getEmail());
 	}
 	@Test
