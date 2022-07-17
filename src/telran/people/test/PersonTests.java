@@ -57,8 +57,8 @@ class PersonTests {
 		String email = "vasya@pupkin.com";
 		int basicSalary = 7000;
 		int sales = 1000000;
-		int percent = 1;
-		SalesPerson vasyaPupkin = new SalesPerson(id, birthYear, email, basicSalary, sales, percent);
+		int percentPay = 1;
+		SalesPerson vasyaPupkin = new SalesPerson(id, birthYear, email, basicSalary, sales, percentPay);
 		assertEquals(id, vasyaPupkin.getId());
 		assertEquals(birthYear, vasyaPupkin.getBirthYear());
 		assertEquals(email, vasyaPupkin.getEmail());
