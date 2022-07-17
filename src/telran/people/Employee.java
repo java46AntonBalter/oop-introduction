@@ -10,9 +10,6 @@ public class Employee extends Person {
 	public void setBasicSalary(int basicSalary) {
 		this.basicSalary = basicSalary;		
 	}
-	public int getBasicSalary() {
-		return basicSalary;
-	}
 	
 	public int computePay() {
 		return this.basicSalary;
