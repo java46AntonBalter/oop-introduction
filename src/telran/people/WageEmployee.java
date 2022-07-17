@@ -16,6 +16,6 @@ public class WageEmployee extends Employee {
 	}
 	@Override
 	public int computePay() {
-		return getBasicSalary() + hours * wage;
+		return super.computePay() + hours * wage;
 	}
 }
