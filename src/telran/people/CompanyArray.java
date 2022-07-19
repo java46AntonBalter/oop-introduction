@@ -47,10 +47,6 @@ public class CompanyArray implements ICompany {
 		return -1;
 	}
 	
-	protected boolean isEmployee(long id) {
-		return getEmployeeIndex(id) >= 0? true : false;
-	}
-
 	@Override
 	public long computeSalaryBudget() {
 		long res = 0;
