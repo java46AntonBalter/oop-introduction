@@ -6,7 +6,8 @@ public class CompanySortedArray extends CompanyArray {
 	@Override
 	public boolean addEmployee(Employee empl) {
 		long emplId = empl.getId();
-		int emplIndex = getEmployeeIndex(emplId) >= 0 ? getEmployeeIndex(emplId) : -(getEmployeeIndex(emplId) + 1);
+		int emplIndex = getEmployeeIndex(emplId);
+		emplIndex = emplIndex >= 0 ? emplIndex : -(emplIndex + 1);
 
 		if (getEmployee(emplId) != null) {
 			return false;
