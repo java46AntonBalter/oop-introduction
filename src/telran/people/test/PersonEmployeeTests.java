@@ -89,4 +89,97 @@ class PersonEmployeeTests {
 		assertEquals(ANOTHER_SALES_PERSON_SALARY, salesPerson.computePay());
 	}
 
+	@Test
+	void wrongBirthYearTest() {
+		boolean flException = false;
+		try {
+			new SalesPerson(123, 2018, "sp@com", 1000, 100, 50);
+			fail("Exception should be thrown");
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertTrue(flException);
+		flException = false;
+		try {
+			new Employee(100, 1913, ANOTHER_EMAIL, BASIC_SALARY);
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertTrue(flException);
+	}
+
+	@Test
+	void wrongEmailTest() {
+		boolean flException = false;
+		try {
+			new SalesPerson(ID, BIRTH_YEAR, "vasya!@pupkin.com", BASIC_SALARY, SALES, PERCENT_PAY);
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertTrue(flException);
+		flException = false;
+		try {
+			new SalesPerson(ID, BIRTH_YEAR, "va-sya@pup!kin.com", BASIC_SALARY, SALES, PERCENT_PAY);
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertTrue(flException);
+		flException = false;
+		try {
+			new SalesPerson(ID, BIRTH_YEAR, "va-sya@pup.kin.com", BASIC_SALARY, SALES, PERCENT_PAY);
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertFalse(flException);
+	}
+	
+	@Test
+	void wrongBasicSalaryTest() {
+		boolean flException = false;
+		try {
+			new WageEmployee(ID, BIRTH_YEAR, EMAIL, 99, WAGE, HOURS);
+			fail("Exception should be thrown");
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertTrue(flException);
+		flException = false;
+		try {
+			new SalesPerson(ID, BIRTH_YEAR, EMAIL, 55, SALES, PERCENT_PAY);
+			fail("Exception should be thrown");
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertTrue(flException);
+	}
+	
+	@Test
+	void wrongPercentPayTest() {
+		boolean flException = false;
+		try {
+			new SalesPerson(ID, BIRTH_YEAR, EMAIL, BASIC_SALARY, SALES, -1);
+			fail("Exception should be thrown");
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertTrue(flException);
+		flException = false;
+		try {
+			new SalesPerson(ID, BIRTH_YEAR, EMAIL, BASIC_SALARY, SALES, 155);
+			fail("Exception should be thrown");
+		} catch (IllegalArgumentException e) {
+			flException = true;
+			System.out.println(e.getMessage());
+		}
+		assertTrue(flException);
+	}
+
 }
