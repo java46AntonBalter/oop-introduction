@@ -84,6 +84,7 @@ class CompanyTests {
 		assertEquals(COMPANY_SIZE, resultEmployees.length);
 		
 	}
+	
 	@Test
 	void performanceTest() {
 		fillRandomEmployees();
@@ -97,6 +98,22 @@ class CompanyTests {
 			company.addEmployee(new Employee((long)(Math.random() * Long.MAX_VALUE), 1980, EMAIL1, 1000));
 		}
 		
+	}
+	
+	@Test
+	void testSortByAge() {
+		Employee[] expected = {
+			empl3, empl1, empl2	
+		};
+		assertArrayEquals(expected, company.sortEmployeesByAge());
+	}
+	
+	@Test
+	void testSortBySalary() {
+		Employee[] expected = {
+			empl2, empl3, empl1	
+		};
+		assertArrayEquals(expected, company.sortEmployeesBySalary());
 	}
 
 }

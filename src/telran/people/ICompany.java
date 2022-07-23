@@ -6,5 +6,7 @@ public interface ICompany {
 	Employee getEmployee(long id);
 	long computeSalaryBudget();
 	Employee[] getAllEmployees();
+	Employee[] sortEmployeesByAge();
+	Employee[] sortEmployeesBySalary();
 
 }
