@@ -15,8 +15,9 @@ public class SalesPerson extends Employee {
 	}
 
 	public void setPercentPay(int percentPay) {
-		if(percentPay < 0 || percentPay > 100) {
-			throw new IllegalArgumentException(String.format("%d - wrong  percent pay value, " + "should be within the possible percent value range [0-100]", percentPay));
+		if (percentPay < 0 || percentPay > 100) {
+			throw new IllegalArgumentException (String.format("%d Wrong percent value,"
+					+ " should be in range [0-100]", percentPay));
 		}
 		this.percentPay = percentPay;
 	}

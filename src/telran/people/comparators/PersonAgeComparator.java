@@ -1,6 +1,7 @@
 package telran.people.comparators;
 
 import java.util.Comparator;
+
 import telran.people.Person;
 
 public class PersonAgeComparator implements Comparator<Person> {
