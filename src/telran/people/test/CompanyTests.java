@@ -145,10 +145,9 @@ class CompanyTests {
 		for(Employee empl: company) {
 			res[index++] = empl;
 		}
-		if (company instanceof CompanySortedArray) {
-			assertArrayEquals(expected, res);
+		if (!(company instanceof CompanySortedArray)) {
+			Arrays.sort(res);
 		} 
-		Arrays.sort(res);
 		assertArrayEquals(expected, res);	
 	}
 
