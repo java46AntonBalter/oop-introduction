@@ -18,28 +18,39 @@ public class Range implements Iterable<Integer> {
 		this.predicate = predicate;
 	}
 	private class RangeIterator implements Iterator<Integer> {
-		int current = min;
-		
+		//If predicate == null all range numbers should be iterated
+		Predicate<Integer> iteratorPredicate = getIteratorPredicate();
+        Integer current = getFirst(); 
 		@Override
 		public boolean hasNext() {
-			if(predicate == null) {
-				return current <= max;
-			} 
-			for (int i = current; i <= max; i++) {
-				if (predicate.test(current)) {
-					return true;
-				}
-				current++;
-			}
-			return false;
+			
+			return current != null;
+		}
+
+		private Integer getFirst() {
+			
+			return iteratorPredicate.test(min) ? min : getNext(min);
+		}
+
+		private Predicate<Integer> getIteratorPredicate() {
+			
+			return predicate == null ? new AllNumbersPredicate() : predicate;
 		}
 
 		@Override
 		public Integer next() {
+			
 			if (!hasNext()) {
 				throw new NoSuchElementException();
 			}
-			return current++;
+			Integer res = current;
+			current = getNext(current);
+			return res;
+		}
+
+		private Integer getNext(Integer from) {
+			while (++from <= max && !iteratorPredicate.test(from)) {}
+			return from > max ? null : from;
 		}
 		
 	}
