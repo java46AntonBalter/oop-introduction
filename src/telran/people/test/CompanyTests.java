@@ -139,11 +139,11 @@ class CompanyTests {
 	}
 	@Test
 	void companyIterableTest() {
-		long[] res = new long[3];
-		long[] expected = {1,2,3};
+		Employee[] res = new Employee[3];
+		Employee[] expected = {empl1, empl2, empl3};
 		int index = 0;
 		for(Employee empl: company) {
-			res[index++] = empl.getId();
+			res[index++] = empl;
 		}
 		if (company instanceof CompanySortedArray) {
 			assertArrayEquals(expected, res);
