@@ -2,6 +2,8 @@ package telran.people.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -111,6 +113,43 @@ class CompanyTests {
 				empl2, empl3, empl1
 			};
 			assertArrayEquals(expected, company.sortEmployeesBySalary());
+	}
+	@Test
+	void testFindSalesPersons() {
+		Employee[] expected = {empl2};
+		assertArrayEquals(expected, company.findEmployees(new SalesPersonPredicate()));
+	}
+	@Test
+	void testFindEmployeesSalaryRange() {
+		Employee[] expectedGT10000 = {
+				empl1
+		};
+		Employee[] expected20000_30000 = {
+				
+		};
+		Employee[] expected1000_1500 = {
+				empl2
+		};
+		assertArrayEquals(expectedGT10000, 
+				company.findEmployees(new SalaryRangePredicate(10000, Integer.MAX_VALUE)));
+		assertArrayEquals(expected20000_30000,
+				company.findEmployees(new SalaryRangePredicate(20000, 30000)));
+		assertArrayEquals(expected1000_1500,
+				company.findEmployees(new SalaryRangePredicate(1000, 1500)));
+	}
+	@Test
+	void companyIterableTest() {
+		long[] res = new long[3];
+		long[] expected = {1,2,3};
+		int index = 0;
+		for(Employee empl: company) {
+			res[index++] = empl.getId();
+		}
+		if (company instanceof CompanySortedArray) {
+			assertArrayEquals(expected, res);
+		} 
+		Arrays.sort(res);
+		assertArrayEquals(expected, res);	
 	}
 
 }
