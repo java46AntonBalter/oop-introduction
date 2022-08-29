@@ -2,6 +2,8 @@ package telran.numbers.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.function.Predicate;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,11 +33,12 @@ class RangeTest {
 	void iterablePredicateTest() {
 		//Test for HW #12
 		int expected[] = {2};
-		range.setPredicate(new EvenNumbersPredicate());
+		Predicate<Integer> evenPredicate = n -> n % 2 == 0;
+		range.setPredicate(evenPredicate);
 		int actual[] = getActualArray(1);
 		assertArrayEquals(expected, actual);
 		int expectedOdd[] = {1, 3};
-		range.setPredicate(new OddNumbersPredicate());
+		range.setPredicate(evenPredicate.negate());
 		actual = getActualArray(2);
 		assertArrayEquals(expectedOdd, actual);
 	}

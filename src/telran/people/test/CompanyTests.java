@@ -119,7 +119,7 @@ class CompanyTests {
 	@Test
 	void testFindSalesPersons() {
 		Employee[] expected = {empl2};
-		assertArrayEquals(expected, company.findEmployees(new SalesPersonPredicate()));
+		assertArrayEquals(expected, company.findEmployees(x -> x instanceof SalesPerson));
 	}
 	@Test
 	void testFindEmployeesSalaryRange() {
@@ -158,14 +158,13 @@ class CompanyTests {
 		}
 		return res;
 	}
-	
 	@Test
 	void NoSuchElementTest() {
 		boolean flException = false;
 		ICompany anotherCompany = new CompanyArray();
 		Iterator<Employee> it = anotherCompany.iterator();
 		try {
-			it.hasNext();
+			it.next();
 		} catch (NoSuchElementException e) {
 			flException = true;
 		}
